@@ -17,6 +17,8 @@ i18n.configure({
 
 var app = express();
 
+const port=process.env.PORT || 3010
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -45,5 +47,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(port, ()=> {
+
+  console.log(`Server running at port `+port);
+  });
 
 module.exports = app;
